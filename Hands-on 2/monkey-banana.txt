@@ -1,0 +1,61 @@
+C:\Users\cat29\Documents\Escuela\9no\Sistemas basados en conocimientos\CLIPSJNI>
+
+C:\Users\cat29\Documents\Escuela\9no\Sistemas basados en conocimientos\CLIPSJNI>java -jar clipsjni.jar
+         CLIPS (6.4 2/9/21)
+CLIPS> (reset)
+CLIPS> (defrule r1 (monkey at-the-door)=>(printout t "monkey is heading to the box" crlf) (retract 1) (assert(monkey at-the-box)))
+CLIPS> (ppdefrule r1)
+(defrule MAIN::r1
+   (monkey at-the-door)
+   =>
+   (printout t "monkey is heading to the box" crlf)
+   (retract 1)
+   (assert (monkey at-the-box)))
+CLIPS> (assert(monkey at-the-door))
+<Fact-1>
+CLIPS> (facts)
+f-1     (monkey at-the-door)
+For a total of 1 fact.
+CLIPS> (defrule r2(monkey hands-free) (monkey at-the-box)=>(printout t "the monkey can grand the box" crlf) (assert(monkey busy-hands-box)) (retract 3) (retract 2))
+CLIPS> (ppdefrule r2)
+(defrule MAIN::r2
+   (monkey hands-free)
+   (monkey at-the-box)
+   =>
+   (printout t "the monkey can grand the box" crlf)
+   (assert (monkey busy-hands-box))
+   (retract 3)
+   (retract 2))
+CLIPS> (assert(monkey hands-free))
+<Fact-2>
+CLIPS> (run)
+monkey is heading to the box
+the monkey can grand the box
+CLIPS> (facts)
+f-4     (monkey busy-hands-box)
+For a total of 1 fact.
+CLIPS> (defrule r3 (monkey busy-hands-box)=>(printout t "monkey should go below to the banana" crlf) (assert(monkey below-banana)))
+CLIPS> (defrule r4 (monkey busy-hands-box) (monkey below-banana)=>(printout t "monkey must drop the box" crlf) (retract 4))
+CLIPS> (ppdefrule r4)
+(defrule MAIN::r4
+   (monkey busy-hands-box)
+   (monkey below-banana)
+   =>
+   (printout t "monkey must drop the box" crlf)
+   (retract 4))
+CLIPS> (facts)
+f-4     (monkey busy-hands-box)
+For a total of 1 fact.
+CLIPS> (run)
+monkey should go below to the banana
+monkey must drop the box
+CLIPS> (defrule r5 (monkey below-banana) (monkey hands-free)=> (printout t "monkey should climb box" crlf) (assert(monkey on-the-box)))
+CLIPS> (defrule r6 (monkey on-the-box)=>(printout t "Monkey take the banana with success" crlf) (assert(monkey have-banana)))
+CLIPS> (run)
+CLIPS> (defrule r4 (monkey busy-hands-box) (monkey below-banana)=>(printout t "monkey must drop the box" crlf) (retract 4) (assert(monkey hands-free)))
+CLIPS> (run)
+CLIPS> (defrule r5 (monkey below-banana)=>(printout t "monkey should climb box" crlf) (assert(monkey on-the-box)))
+CLIPS> (run)
+monkey should climb box
+Monkey take the banana with success
+CLIPS>
