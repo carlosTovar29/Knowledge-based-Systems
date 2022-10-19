@@ -1,0 +1,2 @@
+cd C:\Users\cat29\Documents\Escuela\9no\Clasificación inteligente de datos\JADE
+java -cp lib\jade.jar jade.Boot -gui
