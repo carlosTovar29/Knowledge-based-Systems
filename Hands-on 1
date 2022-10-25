@@ -1,5 +1,8 @@
-cd C:\Users\cat29\Documents\Escuela\9no\Sistemas basados en conocimientos\CLIPSJNI
+Microsoft Windows [Versión 10.0.22621.674]
+(c) Microsoft Corporation. Todos los derechos reservados.
 
-java -jar CLIPSJNI.jar
+C:\Users\cat29>cd C:\Users\cat29\Documents\Escuela\9no\Sistemas basados en conocimientos\CLIPSJNI
 
->CLIPS (6.4 2/9/21)
+C:\Users\cat29\Documents\Escuela\9no\Sistemas basados en conocimientos\CLIPSJNI>java -jar clipsjni.jar
+         CLIPS (6.4 2/9/21)
+CLIPS>
