@@ -1,0 +1,14 @@
+(reset)
+(defrule r1 (monkey at-the-door)=>(printout t "monkey is heading to the box" crlf) (retract 1) (assert(monkey at-the-box)))
+(assert(monkey at-the-door))
+(defrule r2(monkey hands-free) (monkey at-the-box)=>(printout t "the monkey can grand the box" crlf) (assert(monkey busy-hands-box)) (retract 3) (retract 2))
+(assert(monkey hands-free))
+(defrule r3 (monkey busy-hands-box)=>(printout t "monkey should go below to the banana" crlf) (assert(monkey below-banana)))
+(defrule r4 (monkey busy-hands-box) (monkey below-banana)=>(printout t "monkey must drop the box" crlf) (retract 4))
+(defrule r5 (monkey below-banana) (monkey hands-free)=> (printout t "monkey should climb box" crlf) (assert(monkey on-the-box)))
+(defrule r6 (monkey on-the-box)=>(printout t "Monkey take the banana with success" crlf) (assert(monkey have-banana)))
+(defrule r4 (monkey busy-hands-box) (monkey below-banana)=>(printout t "monkey must drop the box" crlf) (retract 4) (assert(monkey hands-free)))
+(defrule r5 (monkey below-banana)=>(printout t "monkey should climb box" crlf) (assert(monkey on-the-box)))
+(run)
+;;monkey should climb box
+;;Monkey take the banana with success
